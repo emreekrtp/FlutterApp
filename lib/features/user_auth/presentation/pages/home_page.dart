@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
               onTap: (){
                 FirebaseAuth.instance.signOut();
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
-
               },
               child: Container(
                 height: 45,
@@ -30,9 +29,12 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: Center(child: Text("Sign out",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),),
-              ),)
-
-
+              ),
+            ),
+            ElevatedButton(
+              child: Text("View page"),
+              onPressed: (){},
+            ),
           ],
         )
     );
