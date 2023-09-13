@@ -1,4 +1,5 @@
 import 'package:final_project/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:final_project/features/user_auth/presentation/pages/home_page.dart';
 import 'package:final_project/features/user_auth/presentation/pages/login_page.dart';
 import 'package:final_project/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,12 +13,11 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final FirebaseAuthService _auth = FirebaseAuthService();
 
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -32,20 +32,18 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Sign Up"),
+        title: const Text("Sign Up"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Sign Up",
-              style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold
-              ),
+            const Text(
+              "Sign Up",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             FormContainerWidget(
@@ -53,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
               hintText: "Username",
               isPasswordField: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             FormContainerWidget(
@@ -61,7 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
               hintText: "Email",
               isPasswordField: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             FormContainerWidget(
@@ -69,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
               hintText: "Password",
               isPasswordField: true,
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
@@ -79,9 +77,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 45,
                 decoration: BoxDecoration(
                     color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)
-                ),
-                child: Center(
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
                   child: Text(
                     "Sign Up",
                     style: TextStyle(
@@ -92,17 +89,26 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Already have an account ?"),
-                SizedBox(width: 5,),
+                const Text("Already have an account ?"),
+                const SizedBox(
+                  width: 5,
+                ),
                 GestureDetector(
-                  onTap: (){
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                        (route) => false);
                   },
-                  child: Text("Login",
+                  child: const Text(
+                    "Login",
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
@@ -124,12 +130,14 @@ class _SignUpPageState extends State<SignUpPage> {
 
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
-    if(user != null) {
+    if (user != null) {
       print("User is successfully created");
-      Navigator.pushNamed(context, "/home");
-    }else{
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          (route) => false);
+    } else {
       print("Some error happened");
     }
-
   }
 }

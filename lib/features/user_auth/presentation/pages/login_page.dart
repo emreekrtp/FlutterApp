@@ -13,7 +13,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   bool _isSigning = false;
 
   final FirebaseAuthService _auth = FirebaseAuthService();
@@ -27,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     _passwordController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +38,11 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Login",
-              style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold
-              ),
+            Text(
+              "Login",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 30,
@@ -70,11 +69,11 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
                 height: 45,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10)
-                ),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Center(
-                  child: Text("Login",
+                  child: Text(
+                    "Login",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -83,17 +82,25 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don't have an account ?"),
-                SizedBox(width: 5,),
+                SizedBox(
+                  width: 5,
+                ),
                 GestureDetector(
-                  onTap: (){
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
+                        (route) => false);
                   },
-                  child: Text("Sign up",
+                  child: Text(
+                    "Sign up",
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
@@ -114,12 +121,12 @@ class _LoginPageState extends State<LoginPage> {
 
     User? user = await _auth.signInWithEmailAndPassword(email, password);
 
-    if(user != null) {
+    if (user != null) {
       print("User is successfully signedIn");
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-    }else{
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
+    } else {
       print("Some error happened");
     }
-
   }
 }

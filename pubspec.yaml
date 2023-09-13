@@ -39,10 +39,16 @@ dependencies:
   cloud_firestore: ^4.9.1
   firebase_auth: ^4.9.0
   firebase_storage: ^11.2.6
+  intl: ^0.18.1
+  flutter_sheet: ^2.0.0
+  google_fonts: ^5.1.0
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
