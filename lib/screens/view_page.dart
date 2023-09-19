@@ -16,7 +16,7 @@ class _ViewPageState extends State<ViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Not Ekle & Düzenle"),
+        title: Text("Notlar"),
       ),
       body: Center(
         child: Column(
@@ -58,6 +58,7 @@ class _ViewPageState extends State<ViewPage> {
                 },
               ),
             ),
+
           ],
         ),
       ),
@@ -65,7 +66,8 @@ class _ViewPageState extends State<ViewPage> {
         label: Text("Add Note"),
         icon: Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => NoteEditorScreen()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => NoteEditorScreen()));
         },
       ),
     );

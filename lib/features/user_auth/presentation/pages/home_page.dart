@@ -1,5 +1,4 @@
 import 'package:final_project/features/user_auth/presentation/pages/login_page.dart';
-import 'package:final_project/screens/note_edit_page.dart';
 import 'package:final_project/screens/view_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,20 +45,7 @@ class HomePage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.yellow,
               ),
-              child: const Text("Notlarım"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const NoteEditPage()));
-              },
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.yellow,
-              ),
-              child: const Text("Not Ekle & Düzenle"),
+              child: const Text("Notlar"),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const ViewPage()));
