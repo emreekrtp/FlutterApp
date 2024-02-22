@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: const Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [Text("Notluk")],
+            children: [Text("GrupBul")],
           ),
           actions: [
             Padding(

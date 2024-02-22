@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "824171226263",
+    "project_id": "final-firebase-af018",
+    "storage_bucket": "final-firebase-af018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824171226263:android:1ad894630fabd2a2b7f5d2",
+        "android_client_info": {
+          "package_name": "com.emka.final_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLK3VsdStfB81gMixaj6YvirWJWfHxXt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824171226263:android:745eeb9c72cc60f6b7f5d2",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLK3VsdStfB81gMixaj6YvirWJWfHxXt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
