@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
       body: Center(
         child: Text(
-          "Welcome to Your Special Notebook",
+          "Welcome to GrupBul",
           style: TextStyle(
               fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold),
         ),

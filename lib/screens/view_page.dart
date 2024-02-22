@@ -16,7 +16,7 @@ class _ViewPageState extends State<ViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notlar"),
+        title: Text("Gruplar"),
       ),
       body: Center(
         child: Column(
@@ -63,7 +63,7 @@ class _ViewPageState extends State<ViewPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text("Add Note"),
+        label: Text("Grup Ekle"),
         icon: Icon(Icons.add),
         onPressed: () {
           Navigator.push(context,

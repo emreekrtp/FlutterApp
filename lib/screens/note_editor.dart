@@ -23,7 +23,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
-          "Add a new Note",
+          "Yeni Grup",
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -36,7 +36,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
               controller: _titleController,
               decoration: const InputDecoration(
                 border: InputBorder.none,
-                hintText: "Note Title",
+                hintText: "Grup Adı",
               ),
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -53,7 +53,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
               maxLines: null,
               decoration: const InputDecoration(
                 border: InputBorder.none,
-                hintText: "Note content",
+                hintText: "Grup Katılımcıları",
               ),
               style: const TextStyle(fontWeight: FontWeight.normal),
             ),
@@ -71,7 +71,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
             });
             Navigator.pop(context);
           } catch (error) {
-            print("Failed to add new Note due to $error");
+            print("Failed to add new Person due to $error");
             // Hata işleme mantığınızı burada yönetin.
           }
         },
