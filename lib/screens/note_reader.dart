@@ -41,6 +41,30 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     }
   }
 
+  void deleteNote() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Notes')
+          .doc(widget.doc.id)
+          .delete();
+      // Silme işlemi başarılı olduğunda kullanıcıya bildir
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Grup başarıyla silindi.'),
+        ),
+      );
+      // İsteğe bağlı olarak bir geri gitme işlemi yapabilirsiniz
+      Navigator.pop(context);
+    } catch (e) {
+      // Hata durumunda kullanıcıya bilgi ver
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Grubu silerken bir hata oluştu: $e'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +101,11 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             ElevatedButton(
               onPressed: updateNoteContent,
               child: Text('Grubu Güncelle'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: deleteNote,
+              child: Text('Grubu Sil'),
             ),
           ],
         ),

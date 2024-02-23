@@ -12,76 +12,59 @@ class HomePage extends StatelessWidget {
     String formattedDate = DateFormat("dd.MM.yyyy").format(DateTime.now());
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [Text("GrupBul")],
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: Center(
-                child: Text(
-                  formattedDate,
-                  style: const TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        title: const Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [Text("GrupBul")],
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(
-                child: Text(
-              "Hoşgeldin!",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-            )),
-            const SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.yellow,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Center(
+              child: Text(
+                formattedDate,
+                style: const TextStyle(fontSize: 18),
               ),
-              child: const Text("Notlar"),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ViewPage()));
-              },
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.yellow,
-              ),
-              child: const Text("Çıkış Yap"),
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
-              },
+          ),
+        ],
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(
+              child: Text(
+            "Hoşgeldin!",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+          )),
+          const SizedBox(
+            height: 30,
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.yellow,
             ),
-          ],
-        ));
+            child: const Text("Gruplar"),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ViewPage()));
+            },
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.yellow,
+            ),
+            child: const Text("Çıkış Yap"),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
-
-/*
-            GestureDetector(
-              onTap: (){
-                FirebaseAuth.instance.signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
-              },
-              child: Container(
-                height: 45,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(10)
-                ),
-                child: Center(child: Text("Sign out",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),),
-              ),
-            ),
-*/ // Container sign out button

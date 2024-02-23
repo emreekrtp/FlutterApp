@@ -11,27 +11,29 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc) {
         color: Colors.cyanAccent,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            doc["note_title"],
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 4.0,
-          ),
-          Text(
-            doc["creation_date"],
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          Text(
-            doc["note_content"],
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              doc["note_title"],
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 4.0,
+            ),
+            Text(
+              doc["creation_date"],
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            Text(
+              doc["note_content"],
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     ),
   );

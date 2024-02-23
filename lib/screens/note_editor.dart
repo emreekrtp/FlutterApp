@@ -12,7 +12,7 @@ class NoteEditorScreen extends StatefulWidget {
 
 class _NoteEditorScreenState extends State<NoteEditorScreen> {
   int color_id = Random().nextInt(99999);
-  String date = DateTime.now().toString();
+  String date = DateTime.now().toIso8601String().split('T')[0];
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _mainController = TextEditingController();
 
