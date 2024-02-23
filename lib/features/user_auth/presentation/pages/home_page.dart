@@ -1,4 +1,5 @@
 import 'package:final_project/features/user_auth/presentation/pages/login_page.dart';
+import 'package:final_project/screens/freeStudents.dart';
 import 'package:final_project/screens/view_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [Text("GrupBul")],
         ),
         actions: [
@@ -49,6 +50,19 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const ViewPage()));
+            },
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.yellow,
+            ),
+            child: const Text("Grup Arayanlar"),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const GrupArayanlar()));
             },
           ),
           ElevatedButton(
