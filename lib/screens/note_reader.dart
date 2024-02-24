@@ -11,31 +11,36 @@ class NoteReaderScreen extends StatefulWidget {
 }
 
 class _NoteReaderScreenState extends State<NoteReaderScreen> {
+  TextEditingController _noteTitleController = TextEditingController();
   TextEditingController _noteEditingController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    _noteTitleController.text = widget.doc["note_title"];
     _noteEditingController.text = widget.doc["note_content"];
   }
 
-  void updateNoteContent() async {
+  void updateNote() async {
     try {
       await FirebaseFirestore.instance
           .collection('Notes')
           .doc(widget.doc.id)
-          .update({'note_content': _noteEditingController.text});
-      // Başarıyla güncellendiğini bildir
+          .update({
+        'note_title': _noteTitleController.text,
+        'note_content': _noteEditingController.text,
+      });
+      // Success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Grup içeriği güncellendi.'),
+          content: Text('Grup başlığı ve içeriği başarıyla güncellendi.'),
         ),
       );
     } catch (e) {
-      // Hata durumunda kullanıcıya bilgi ver
+      // Error message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Grup içeriğini güncellerken bir hata oluştu: $e'),
+          content: Text('Grup başlığı ve içeriği güncellerken hata oluştu: $e'),
         ),
       );
     }
@@ -47,19 +52,19 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
           .collection('Notes')
           .doc(widget.doc.id)
           .delete();
-      // Silme işlemi başarılı olduğunda kullanıcıya bildir
+      // Success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Grup başarıyla silindi.'),
         ),
       );
-      // İsteğe bağlı olarak bir geri gitme işlemi yapabilirsiniz
+      // Optional navigation back
       Navigator.pop(context);
     } catch (e) {
-      // Hata durumunda kullanıcıya bilgi ver
+      // Error message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Grubu silerken bir hata oluştu: $e'),
+          content: Text('Grubu silerken hata oluştu: $e'),
         ),
       );
     }
@@ -76,36 +81,39 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.doc["note_title"],
-              style: TextStyle(fontWeight: FontWeight.bold),
+            TextField(
+              controller: _noteTitleController,
+              decoration: InputDecoration(
+                hintText: 'Grup adı',
+                border: OutlineInputBorder(),
+              ),
             ),
-            SizedBox(
-              height: 4.0,
-            ),
+            SizedBox(height: 16),
             Text(
               widget.doc["creation_date"],
             ),
-            SizedBox(
-              height: 28.0,
-            ),
+            SizedBox(height: 28.0),
             TextField(
               controller: _noteEditingController,
-              maxLines: null, // Metnin birden fazla satıra yayılmasına izin verir
+              maxLines: null, // Allow multi-line content
               decoration: InputDecoration(
                 hintText: 'Grup içeriğini buraya girin',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: updateNoteContent,
-              child: Text('Grubu Güncelle'),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: deleteNote,
-              child: Text('Grubu Sil'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: updateNote,
+                  child: Text('Grubu Güncelle'),
+                ),
+                ElevatedButton(
+                  onPressed: deleteNote,
+                  child: Text('Grubu Sil'),
+                ),
+              ],
             ),
           ],
         ),
